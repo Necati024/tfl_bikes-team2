@@ -8,12 +8,20 @@ router.get('/', function(req, res) {
 
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
+           
     var db = req.db;
     var collection = db.get('stationcollection');
-           collection.find({}, {"StartStation Id":1, "EndStation Id":1} ,function(e,docs){
+           
+    var stationCount = new Array(777);
+    for(var n=0; n<stationCount.length; n++)
+    {
+        stationCount[n] = 0;
+    }
+           
+    collection.find({}, {"StartStation Id":1, "EndStation Id":1} ,function(e,docs){
                            
         res.render('userlist', {
-            "userlist" : docs
+            "userlist" : stationCount
         });
                            
     });
