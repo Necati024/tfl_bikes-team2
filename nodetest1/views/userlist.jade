@@ -1,9 +1,24 @@
 extends layout
 
 block content
-    h1.
-        User List
-    ul
-        each user, i in userlist
-            li
-                a(href="mailto:#{user.email}")= user._id
+  h1 Nej
+ 
+
+  table
+    thead
+      tr
+        th Station Name
+        th Station Capacity
+        
+    tbody
+       each user, i in userlist
+        tr
+          td=user.Station_Name
+          td=user.Station_Capacity
+        
+
+
+
+
+
+   
