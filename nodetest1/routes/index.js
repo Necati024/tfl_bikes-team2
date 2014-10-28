@@ -9,11 +9,13 @@ router.get('/', function(req, res) {
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
     var db = req.db;
-    var collection = db.get('capcollection');
-    collection.find({},{},function(e,docs){
+    var collection = db.get('stationcollection');
+           collection.find({}, {"StartStation Id":1, "EndStation Id":1} ,function(e,docs){
+                           
         res.render('userlist', {
             "userlist" : docs
         });
+                           
     });
 });
 
