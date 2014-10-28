@@ -17,14 +17,25 @@ router.get('/userlist', function(req, res) {
     {
         stationCount[n] = 0;
     }
-           
-    collection.find({}, {"StartStation Id":1, "EndStation Id":1} ,function(e,docs){
-                           
+    
+    collection.find({}, {"StartStation Id":1, "EndStation Id":1} ,function(e,journeys){
+              
+        for(var n=0; n<journeys.length; n++)
+        {
+            var startStation = journeys[n]['StartStation Id'];
+                    console.debug("fuck");
+            stationCount[startStation] = stationCount[startStation] - 1;
+                    
+            var endStation = journeys[n]['EndStation Id'];
+            stationCount[endStation] = stationCount[endStation] + 1;
+        }
+                    
         res.render('userlist', {
             "userlist" : stationCount
         });
                            
     });
+
 });
 
 module.exports = router;
