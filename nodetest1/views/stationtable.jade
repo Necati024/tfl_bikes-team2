@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Stations
+
+  table
+    thead
+      tr
+        th Id
+        th Name
+        th Capacity
+        th Latitude
+        th Longitude
+        th Get/Put Bikes
+        
+    tbody
+       each station, i in stationtable
+        tr
+          td=station.id
+          td=station.name
+          td=station.nbDocks
+          td=station.lat
+          td=station.long
+        

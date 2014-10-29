@@ -23,7 +23,6 @@ router.get('/userlist', function(req, res) {
         for(var n=0; n<journeys.length; n++)
         {
             var startStation = journeys[n]['StartStation Id'];
-                    console.debug("fuck");
             stationCount[startStation] = stationCount[startStation] - 1;
                     
             var endStation = journeys[n]['EndStation Id'];
@@ -37,5 +36,21 @@ router.get('/userlist', function(req, res) {
     });
 
 });
+
+/* GET Station Table page. */
+router.get('/stationtable', function(req, res) {
+           
+           var db = req.db;
+           var collection = db.get('stationtable');
+           
+           collection.find({}, {"id":1, "name":1, "lat":1, "long":1} ,function(e,stations){
+                           
+                           res.render('stationtable', {
+                                      "stationtable" : stations
+                                      });
+                           
+                           });
+           
+           });
 
 module.exports = router;
