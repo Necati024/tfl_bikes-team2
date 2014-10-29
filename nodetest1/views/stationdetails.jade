@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Stations
+  h1 station.stationName
 
   table
     thead
@@ -12,10 +12,9 @@ block content
         th Get/Put Bikes
         
     tbody
-       each station, i in stationtable
+       each station, i in stationdetails
         tr
-          td=station.time
-          td=station.bikes
-          td=station.capacity
-          td=station.status
+        
+            each smth, i in  station.details
+              td=smth.time
         
