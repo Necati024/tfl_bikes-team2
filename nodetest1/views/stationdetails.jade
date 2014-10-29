@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Stations
+
+  table
+    thead
+      tr
+        th Time
+        th Bikes
+        th Capacity
+        th Get/Put Bikes
+        
+    tbody
+       each station, i in stationtable
+        tr
+          td=station.time
+          td=station.bikes
+          td=station.capacity
+          td=station.status
+        

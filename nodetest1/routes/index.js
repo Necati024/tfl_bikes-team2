@@ -43,10 +43,26 @@ router.get('/stationtable', function(req, res) {
            var db = req.db;
            var collection = db.get('stationtable');
            
-           collection.find({}, {"id":1, "name":1, "lat":1, "long":1} ,function(e,stations){
+           collection.find({}, {"id":1, "name":1, "lat":1, "long":1} ,function(e,stationtable){
                            
                            res.render('stationtable', {
-                                      "stationtable" : stations
+                                      "stationtable" : stationtable
+                                      });
+                           
+                           });
+           
+           });
+
+/* GET Station Details page. */
+router.get('/stationdetails', function(req, res) {
+           
+           var db = req.db;
+           var collection = db.get('stationdetails');
+           
+           collection.find({}, {"time":1, "bikes":1, "capacity":1, "status":1} ,function(e,stationdetails){
+                           
+                           res.render('stationdetails', {
+                                      "stationdetails" : stationdetails
                                       });
                            
                            });
