@@ -12,3 +12,11 @@ http://www.mongodb.org/dr//fastdl.mongodb.org/osx/mongodb-osx-x86_64-2.6.5.tgz/d
 cd into nodetest1 of the tfl_bike-team2 folder and run npm start
 go to http://localhost:3000/stationdetails
   you will see the table
+
+
+If you type mongo on terminal you can acess the db.
+  -show dbs :shows all the dbs on your local.
+  -use dbsname: you use a specific db
+     in our case you wanna do use BikesData
+  -show collections: will show you the collections in that database 
+   -bikesstations is the collection that has the desired table 
