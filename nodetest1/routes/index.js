@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
 
-  console.log("FUKC");
+   
 
   var  tableSchema =new mongoose.Schema({
      id:Number,
@@ -47,7 +47,7 @@ var stationSchema = new mongoose.Schema({
     details:[detailSchema]
 });
 
-var Station=mongoose.model('Statio', stationSchema); 
+var Station=mongoose.model('bikeStation', stationSchema); 
  module.exports={
      Station:Station
      }
@@ -56,7 +56,11 @@ var StationTable=mongoose.model('stationtable', tableSchema);
  module.exports={
      StationTable:StationTable
      }
- var capacity=45;
+
+var index=0;
+for(index=0; index<40; index++){
+
+ var capacity=Math.round(Math.random() * 35);
  var a=Math.round(Math.random() * capacity);
  var pecent=a/capacity;
   var s;
@@ -69,8 +73,10 @@ var StationTable=mongoose.model('stationtable', tableSchema);
  else {
     s=0;
  }
+
+ var Stations = ["Kings Cross", "Euston", "EversholtStreet","Penton Road","Camden","Covent Graden","Baker Street","Picadilly"];
  var data =new Station({
-   stationName:'33',
+   stationName: Stations[Math.round(Math.random()*7)],
    details:
    [ {
      time:1 ,
@@ -81,13 +87,13 @@ var StationTable=mongoose.model('stationtable', tableSchema);
      }
    ]
 });
- 
-
-
- data.save(function(err, dat) {
+  data.save(function(err, dat) {
   if (err) return console.error(err);
   console.dir(dat);
 });
+}
+
+
 router.get('/stationdetails', function(req, res) {
   Station.find(function(err,details){
        if(err)return console.error(err);

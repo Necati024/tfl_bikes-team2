@@ -6,15 +6,26 @@ block content
   table
     thead
       tr
+        th Station
         th Time
         th Bikes
         th Capacity
-        th Get/Put Bikes
+        th Status
         
     tbody
+      select
+        each station, i in stationdetails
+        
+              option(value=station.stationName)=station.stationName
+             //- each smth, i in  station.details
+                td=smth.time
+      tbody
        each station, i in stationdetails
         tr
-        
+              
             each smth, i in  station.details
+              td=station.stationName
               td=smth.time
-        
+              td=smth.amount
+              td=smth.cap
+              td=smth.status
