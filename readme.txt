@@ -20,3 +20,29 @@ If you type mongo on terminal you can acess the db.
      in our case you wanna do use BikesData
   -show collections: will show you the collections in that database 
    -bikesstations is the collection that has the desired table 
+  - if you type db.bikestations.find().pretty(), you will se the data(**first run the webstie so it populates and creates the database on mongo)
+  I used a nested shcema the structure looks like this 
+  {
+	"_id" : ObjectId("545209730409edb648c5d3b7"),
+	"stationName" : "Baker Street",
+	"details" : [
+		{
+			"time" : "1",
+			"amount" : 9,
+			"cap" : 11,
+			"persent" : 0.8181818181818182,
+			"status" : 0,
+			"_id" : ObjectId("545209730409edb648c5d3b8")
+		}
+	],
+	"__v" : 0
+}
+ Each station has a schema showing :
+   -the time duration(12:00 to 13:00), 
+   - the amoutn of bikes available
+   - the total capacity
+   - the percentage which is amount/cap (Called it persent on the table, dun ask why)
+   -status, the value to determine if there is need of bikes or need od bikes to be taken away.
+
+   these are the endpoint that you will use for the api
+   
