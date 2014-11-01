@@ -95,7 +95,7 @@ for(index=0; index<40; index++){
 
 
 router.get('/stationdetails', function(req, res) {
-  Station.find(function(err,details){
+  Station.find({},{},function(err,details){
        if(err)return console.error(err);
         
        res.render('stationdetails', {

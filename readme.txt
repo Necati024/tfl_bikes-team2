@@ -13,6 +13,16 @@ cd into nodetest1 of the tfl_bike-team2 folder and run npm start
 go to http://localhost:3000/stationdetails
   you will see the table
 
+all of these are done in the index.js file which is in the routes folder.
+Randomized data are added into the database.
+If you wanna acces the data in code you can acces wrtiing this on the index.js file
+  Station.find(function(err,details{
+  if(err)return console.error(err)
+
+  }));
+  all the information is put into the details array
+
+
 
 If you type mongo on terminal you can acess the db.
   -show dbs :shows all the dbs on your local.
@@ -44,5 +54,6 @@ If you type mongo on terminal you can acess the db.
    - the percentage which is amount/cap (Called it persent on the table, dun ask why)
    -status, the value to determine if there is need of bikes or need od bikes to be taken away.
 
-   these are the endpoint that you will use for the api
-   
+   these are the endpoint that you will use for the 
+
+
