@@ -8,17 +8,18 @@ block content
       tr
         th Id
         th Name
-        th Capacity
+        th Date
         th Latitude
         th Longitude
-        th Get/Put Bikes
+        th Status
         
     tbody
        each station, i in stationtable
         tr
           td=station.id
           td=station.name
-          td=station.nbDocks
+          td=station.time
           td=station.lat
           td=station.longd
+          td=station.status
         

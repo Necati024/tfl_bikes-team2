@@ -17,9 +17,9 @@
 10 error You can get their info via:
 10 error     npm owner ls nodetest1
 10 error There is likely additional logging output above.
-11 error System Darwin 13.0.0
+11 error System Darwin 14.0.0
 12 error command "node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/NecatiMunir/Desktop/tfl_bikes-team2/nodetest1
+13 error cwd /Users/NecatiMunir/Desktop/the shit/tfl_bikes-team2/nodetest1
 14 error node -v v0.10.29
 15 error npm -v 1.4.14
 16 error code ELIFECYCLE
