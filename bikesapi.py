@@ -4,8 +4,11 @@ import os
 
 from flask import *
 from flask.ext.pymongo import PyMongo
+from flask.ext.cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/v1/*": {"origins": "*"}},
+            headers=["Content-Type", "accept"])
 
 if "MONGOHQ_URL" in os.environ:
     app.config["MONGO_URI"] = os.environ["MONGOHQ_URL"]
@@ -49,8 +52,9 @@ class Van(object):
         return {time: snapshot.to_json() for (time, snapshot) in self.route.items()}
 
 class StationSnapshot(object):
-    def __init__(self, id, location, capacity, usage, time):
+    def __init__(self, id, name, location, capacity, usage, time):
         self.id = id
+        self.name = name
         self.location = location
         self.capacity = capacity
         self.usage = usage
@@ -62,6 +66,7 @@ class StationSnapshot(object):
     def to_json(self):
         return {
             "station_id": self.id,
+            "station_name": self.name,
             "latitude": self.location[0],
             "longitude": self.location[1],
             "station_status": self.status(),
@@ -69,13 +74,10 @@ class StationSnapshot(object):
             "usage": self.usage,
         }
 
-    def copy(self):
-        return StationSnapshot(
-            self.id, self.location, self.capacity, self.usage, self.time)
-
 class Station(object):
-    def __init__(self, id, location):
+    def __init__(self, id, name, location):
         self.id = id
+        self.name = name
         self.location = location
         self.snapshots = []
 
@@ -83,7 +85,7 @@ class Station(object):
         state = get_state(capacity, usage)
 
         self.snapshots.append(
-            StationSnapshot(self.id, self.location, capacity, usage, time))
+            StationSnapshot(self.id, self.name, self.location, capacity, usage, time))
         self.snapshots.sort(key=lambda a: a.time)
 
     def snapshot(self, time):
@@ -98,7 +100,7 @@ class Station(object):
             prop = (time - prev.time).total_seconds() / (curr.time - prev.time).total_seconds()
             usage = int(prev.usage + prop * (curr.usage - prev.usage))
 
-            return StationSnapshot(self.id, self.location, prev.capacity,
+            return StationSnapshot(self.id, self.name, self.location, prev.capacity,
                                    usage, time)
 
         return self.snapshots[-1]
@@ -135,7 +137,7 @@ def load_stations(start_time, end_time):
         record = mongo.db.stationtable.find_one({"id": sid})
 
         loc = (record["lat"], record["longd"])
-        station = Station(sid, loc)
+        station = Station(sid, record["name"], loc)
 
         query = {"id": sid, "time": time_query}
         for record in mongo.db.stationtable.find(query):
@@ -163,7 +165,7 @@ def route_vans():
         return "Require numeric date", 400
 
     start_time = datetime.datetime.fromtimestamp(start_time_epoch)
-    end_time = start_time + JOURNEY_TIME * 24
+    end_time = start_time + JOURNEY_TIME * 12
 
     stations = load_stations(start_time, end_time)
 
@@ -192,7 +194,7 @@ def route_vans():
             van.add_snapshot(current_time, next_station)
             van.current_location = next_station.location
             van.current_status = next_station.status()
-        current_time += JOURNEY_TIME
+        current_time += JOURNEY_TIME * (0.7 + random.random() * 0.6)
 
     return jsonify({
         "routes": [v.to_json() for v in vans]
@@ -215,7 +217,8 @@ def station_info(sid):
             "id": station["id"],
             "name": station["name"],
             "latitude": station["lat"],
-            "longitude": station["longd"]
+            "longitude": station["longd"],
+            "capacity": station["cap"],
         })
     return jsonify({
         "stations": stations
