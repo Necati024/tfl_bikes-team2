@@ -48,7 +48,7 @@ var StationTable=mongoose.model('stationtable', tableSchema);
      }
 
 
-StationTable.count({}, function( err, count){
+/*StationTable.count({}, function( err, count){
     console.log( "Number of users:", count );
   if (count==0){
  Station.find({},{},function(err, details) {
@@ -75,7 +75,7 @@ StationTable.count({}, function( err, count){
 }
 });
 }
-});
+});*/
  
   function addData(p1,p2,p3,p4,p5,p6){
 
@@ -91,35 +91,33 @@ StationTable.count({}, function( err, count){
     });
 data.save(function(err, dat) {
   if (err) return console.error(err);
-  console.dir(dat);
+  //console.dir(dat);
 
 });
  
 }
 
-
-
-    
-
 module.exports = router;
 
-/* GET Station Table page. */
-router.get('/stationtable', function(req, res) {
+// /* GET Station Table page. */
+// router.get('/stationtable', function(req, res) {
            
          
            
-           StationTable.find({}, {} ,function(err,stationtable){
+//            StationTable.find({}, {} ,function(err,stationtable){
                            
-                           res.render('stationtable', {
-                                      "stationtable" : stationtable
-                                      });
+//                            res.render('stationtable', {
+//                                       "stationtable" : stationtable
+//                                       });
                            
-                           });
+//                            });
            
-           });
+//            });
 
 
-
+exports.index = function(req, res){
+  console.log('incearca sa dea render');
+res.render('index', { title: 'ejs' });};
 
 
 module.exports = router;
