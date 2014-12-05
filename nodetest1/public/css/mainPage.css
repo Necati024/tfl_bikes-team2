@@ -1,0 +1,333 @@
+html, body{
+
+width: 100%;
+height: 140%;
+background-image: url('../images/test4.jpg');
+background-size: 100% 55%;
+background-repeat: no-repeat;
+color: #fff;
+font-family: 'Roboto Slab', serif;
+font-size: 16px;
+font-weight: bold;
+}
+
+.row{
+text-align: center;
+margin-right: 0px;
+}
+
+#menu{
+
+width: 80%;
+margin-left: 10%;
+height: 25%;
+padding-top: 1%;
+margin-top: 5%;
+padding-bottom: 1%;
+
+}
+
+#menu span{
+
+	padding-top: 10%;
+	font-size: 4em;
+	border-radius: 50%;
+	border: 5px solid black;
+	
+}
+
+a:link {
+    color: black;
+}
+
+/* visited link */
+a:visited {
+    color: #F0F8FF;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+#menu p{
+
+  font: 400 20px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: #2070b0;
+  
+}
+
+
+#map{
+	
+margin-top: 3%;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+height: 87%;
+}
+
+#search-container{
+	padding-top: 3%;
+}
+
+
+/* General styles
+-------------------------------------------------*/
+
+.vegas-background { opacity: .6; }
+.vegas-overlay { opacity: .6; }
+
+#preloader {
+	background-color: #1a2630;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 999; 
+}
+ 
+#status, .status-mes {
+	
+	height: 200px;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	position: absolute;
+	top: 50%;
+	width: 200px; 
+}
+ 
+.status-mes {
+	background: none;
+	left: 0;
+	margin: 0;
+	padding-left: 12px;
+	text-align: center;
+	top: 65%; 
+	font-family: 'Lily Script One', cursive;	
+}
+
+
+/* Basic Structure
+-------------------------------------------------*/
+
+.layout {
+	min-height: 50%;
+	position: relative;
+	z-index: 3; 
+}
+ 
+.main {
+	height: 100%;
+	margin: 5% auto 0 auto;
+	margin-bottom: 0px;	
+	width: 100%; 
+
+}
+
+.secondPart{
+	height: 80%;
+	width: 100%;
+	
+		background-image: url('../images/second.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+ 
+.new-modal {
+	background: rgba(26, 38, 48, .7);
+	display: none;
+	left: 0;
+	min-height: 160%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 4; 
+}
+
+.new-modal .main { 
+	max-width: 600px;
+} 
+
+.title, .slogan, .more-links, .social {
+	text-align: center;
+}
+
+/* Main
+-------------------------------------------------*/
+
+.title {
+	overflow: hidden;
+}
+
+.slogan, .more-links {
+	margin-bottom: 40px;
+}
+
+.social { 
+	margin-top: 30px;
+}
+
+.social li { 
+	padding: 0; 
+}
+
+.social a {
+	border-radius: 150px;
+	border: 2px solid #fff;
+	display: inline-block;
+	font-size: 18px;
+		height: 40px;
+	line-height: 36px;
+	width: 40px;
+	margin: 0 5px;
+	height: 50px;
+	line-height: 46px;
+	margin: 0 10px;
+	transition: all 0.5s ease-in-out;
+	width: 50px;
+	-webkit-transition: all 0.5s ease-in-out; 
+	   -moz-transition: all 0.5s ease-in-out;
+	    -ms-transition: all 0.5s ease-in-out;
+	     -o-transition: all 0.5s ease-in-out;
+	}
+
+
+
+.more-links a{
+
+	border-radius: 50%;
+	border: 4px solid #fff;
+	display: inline-block;
+	font-size: 5em;
+	height: 150px;
+	margin: 20px;
+	padding-top: 20px;
+	
+	transition: all 0.5s ease-in-out;
+	width: 150px;
+	-webkit-transition: all 0.5s ease-in-out; 
+	   -moz-transition: all 0.5s ease-in-out;
+	    -ms-transition: all 0.5s ease-in-out;
+	     -o-transition: all 0.5s ease-in-out;
+
+  -moz-box-shadow: 0px 0px 2px #888;
+  -webkit-box-shadow: 0px 0px 2px #888;
+  box-shadow: 0px 0px 2px #888;
+}
+
+.more-links a:hover, .social a:hover {
+	background: #fff;
+	color: #222;
+}
+
+
+
+.main > .close {
+	float: none;
+	opacity: 1;
+	text-shadow: none; 
+	text-align: center;
+}
+
+
+.routeButton span{
+
+	border-radius: 50%;
+	border: 4px solid #fff;
+	display: inline-block;
+	font-size: 1em;
+	margin: 20px;
+	padding-top: 35px;
+	height: 100px;
+	transition: all 0.5s ease-in-out;
+	width: 100px;
+	-webkit-transition: all 0.5s ease-in-out; 
+	   -moz-transition: all 0.5s ease-in-out;
+	    -ms-transition: all 0.5s ease-in-out;
+	     -o-transition: all 0.5s ease-in-out;
+
+  -moz-box-shadow: 0px 0px 2px #888;
+  -webkit-box-shadow: 0px 0px 2px #888;
+  box-shadow: 0px 0px 2px #888;
+  opacity: .6;
+
+}
+
+.routeButton span:hover{
+	cursor: pointer;
+}
+
+.routeButtonHover{
+	background: #fff;
+	color: #222;
+	opacity: .4;
+	
+}
+
+
+.routeButtonActive{
+	background: #fff;
+	color: #222;
+	opacity: .4;
+	
+}
+
+/* Typography
+-------------------------------------------------*/
+h1, h2, h3, h4 {
+	font-family: 'Lily Script One', cursive;
+}
+
+.title > h1 {
+
+	font-weight: 600;
+	font-size: 50px;
+	text-shadow: 0 1px 1px #888;
+	color: white;
+}
+
+.title > h2:after {
+	background: #fff;
+	content: "";
+	display: block;
+	height: 2px;
+	position: relative;
+	width: 20%;
+	margin: 10px auto;
+}
+
+.slogan {
+	font-size: 20px;
+	color: white;
+	font-weight: normal;
+}
+
+
+#map-container{
+
+height: 50%;
+width: 100%;
+}
+
+#firstContainer{
+
+	margin-top: 1%;
+	height: 10%;
+	width: 100%;
+	
+
+
+}
+
+.display_pic{
+	width:80px;
+	height:80px;
+	margin: 10px 5px;
+}
+
+.info_text {
+	color:white;
+}
